@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MySplot</string>
+    <string name="take_photo">Take photo</string>
+    <string name="upload_photo">Upload photo</string>
+    <string name="logout">Sign out</string>
+
+    <string name="login_login">Sign in</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+
+    <string name="upload_photo_title">Title</string>
+    <string name="upload_photo_interests">Interests</string>
+    <string name="upload_photo_description">Description</string>
+    <string name="upload_photo_upload">Upload</string>
+
+    <string name="user_credentials">USER_CREDENTIALS</string>
+    <string name="credentials_username">username</string>
+    <string name="credentials_password">password</string>
+</resources>

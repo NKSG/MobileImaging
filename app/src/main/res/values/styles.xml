@@ -1,0 +1,66 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/ActionBar</item>
+    </style>
+
+    <style name="NoActionBar" parent="android:Theme.Holo.Light.NoActionBar">
+
+
+    </style>
+
+    <style name="ActionBar" parent="android:Widget.Holo.ActionBar">
+        <item name="android:background">@color/theme</item>
+        <item name="android:titleTextStyle">@style/ActionBarText</item>
+    </style>
+
+
+    <style name="ActionBarText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="Button">
+        <item name="android:background">@drawable/button</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="custom_EditTextStyle" parent="@android:style/Widget.EditText">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:background">@drawable/edittext</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="custom_TextAreaStyle" parent="android:style/Widget.EditText">
+        <item name="android:inputType">textMultiLine</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:background">@drawable/edittext</item>
+        <item name="android:gravity">top|left</item>
+    </style>
+
+    <style name="custom_ImageViewStyle">
+        <item name="android:background">@drawable/edittext</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="CustomDialog" parent="@android:style/Theme.Holo.Dialog">
+        <item name="android:windowTitleStyle">@style/dialog_title_style</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="dialog_title_style" parent="android:Widget.TextView">
+        <item name="android:background">@drawable/dialog</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+</resources>
