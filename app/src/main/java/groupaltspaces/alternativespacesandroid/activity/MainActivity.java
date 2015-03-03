@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.media.ExifInterface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -13,14 +14,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.net.Uri;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
 
 import groupaltspaces.alternativespacesandroid.R;
-import groupaltspaces.alternativespacesandroid.util.FileUtils;
 
 
 public class MainActivity extends Activity {
@@ -75,30 +73,6 @@ public class MainActivity extends Activity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        System.out.println(requestCode + " " + resultCode + " " + data);
-        if(resultCode != RESULT_OK) return;
-
-        Intent intent = new Intent(context, UploadActivity.class);
-        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
-            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            if(location == null) location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-            if(location == null) {
-                Toast.makeText(this, "Could not acquire location", Toast.LENGTH_LONG).show();
-                return;
-            }
-
-            setImageLocation(fileUri, location);
-            intent.putExtra("imageURI", fileUri);
-            intent.putExtra("deleteImage", true);
-        } else if (requestCode == ACTIVITY_CHOOSE_FILE) {
-            intent.putExtra("imageURI", Uri.parse("file://" + FileUtils.getPath(this, data.getData())));
-            intent.putExtra("deleteImage", false);
-        }
-        startActivity(intent);
-    }
 
     private void setImageLocation(Uri fileUri, Location location){
         try {
@@ -156,8 +130,6 @@ public class MainActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if(id == R.id.logout){
-            getSharedPreferences(getResources().getString(R.string.user_credentials),0).edit().clear().commit();
-            startActivity(new Intent(context, LoginActivity.class));
             finish();
         }
         return super.onOptionsItemSelected(item);
