@@ -1,15 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">MobImaging</string>
 
-    <string name="app_name">Checkers Checker</string>
-    <string name="take_photo">Check</string>
-    <string name="upload_photo">Double-Check</string>
-    <string name="logout">Check Out</string>
-
-    <string name="login_login">Check in</string>
-    <string name="login_username">Username</string>
-    <string name="login_password">Password</string>
-
-    <string name="upload_photo_title">Title</string>
-
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 </resources>
