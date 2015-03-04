@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/assios/AndroidStudioProjects/MobImaging/openCVSamplecameracalibration/build/intermediates/exploded-aar/MobImaging/openCVLibrary2410/unspecified/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="619c90c0a4ce8db6b683f9918e0c1c6255faf1a0">
+        <dex dex="/home/assios/AndroidStudioProjects/MobImaging/openCVSamplecameracalibration/build/intermediates/pre-dexed/debug/classes-66d0276be31353a3f8e034e4cfce48a4084ac0d1.jar" />
+    </item>
+
+</items>
