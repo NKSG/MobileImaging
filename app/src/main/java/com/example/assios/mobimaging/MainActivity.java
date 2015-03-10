@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SurfaceView;
+import java.util.Arrays;
+import java.util.List;
 
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
@@ -14,8 +16,17 @@ import org.opencv.android.JavaCameraView;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfPoint;
+import org.opencv.core.Size;
+import org.opencv.core.MatOfPoint2f;
+
+import static org.opencv.calib3d.Calib3d.CALIB_CB_ADAPTIVE_THRESH;
+import static org.opencv.calib3d.Calib3d.findChessboardCorners;
+
 
 public class MainActivity extends ActionBarActivity implements CvCameraViewListener2 {
+
+    public int count = 0;
 
     private final static String TAG = "OpenCvTest:MainActivity";
 
@@ -95,8 +106,23 @@ public class MainActivity extends ActionBarActivity implements CvCameraViewListe
         // TODO stuff
     }
 
+    //board
+    int board_width = 8;
+    int board_height = 8;
+
+    //DENNE DEKLARERES MULIGENS FEIL
+    public MatOfPoint2f points = new MatOfPoint2f();
+
+    public Size boardSize = new Size(board_width, board_height);
+
+
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
-        return inputFrame.rgba();
+        Mat img = inputFrame.rgba();
+
+        //FEILMELDINGER PÅ DEN UNDER FORELØPIG
+        //boolean found = findChessboardCorners( img, boardSize, points, 15 );
+
+        return img;
     }
 }
