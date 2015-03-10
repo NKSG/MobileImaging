@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.opencv.android.CameraBridgeViewBase;
+import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.JavaCameraView;
@@ -28,7 +29,9 @@ public class MainActivity extends ActionBarActivity implements CvCameraViewListe
 
     public int count = 0;
 
-    private final static String TAG = "OpenCvTest:MainActivity";
+    private CameraBridgeViewBase mOpenCvCameraView;
+
+    private final static String TAG = "OCV::MainActivity";
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -47,8 +50,6 @@ public class MainActivity extends ActionBarActivity implements CvCameraViewListe
             }
         }
     };
-
-    private JavaCameraView mOpenCvCameraView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,14 +112,15 @@ public class MainActivity extends ActionBarActivity implements CvCameraViewListe
     int board_height = 8;
 
     //DENNE DEKLARERES MULIGENS FEIL
-    public MatOfPoint2f points = new MatOfPoint2f();
+
+    public MatOfPoint2f points;
 
     public Size boardSize = new Size(board_width, board_height);
 
     public boolean found = false;
 
     @Override
-    public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
+    public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
         Mat img = inputFrame.rgba();
 
         //FEILMELDINGER PÅ DEN UNDER FORELØPIG
