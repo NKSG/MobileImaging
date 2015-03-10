@@ -115,6 +115,7 @@ public class MainActivity extends ActionBarActivity implements CvCameraViewListe
 
     public Size boardSize = new Size(board_width, board_height);
 
+    public boolean found = false;
 
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
