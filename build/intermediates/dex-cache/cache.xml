@@ -2,11 +2,32 @@
 <items version="2" >
 
     <item
+        jar="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/pre-dexed/debug/classes-4e258662d79f9cf41a416ab9a0d4ab80f662f0ac.jar" />
+    </item>
+    <item
+        jar="/home/assios/AndroidStudioProjects/MobImaging/openCVTutorial1CameraPreview/build/intermediates/exploded-aar/MobImaging/openCVLibrary2410/unspecified/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="477ba977ec219abda693cd925ef4373fea65fe80">
+        <dex dex="/home/assios/AndroidStudioProjects/MobImaging/openCVTutorial1CameraPreview/build/intermediates/pre-dexed/debug/classes-1c2ffbc520460fbbd0649489c8d056e44010bfdd.jar" />
+    </item>
+    <item
         jar="/home/assios/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
         <dex dex="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-4b9b2c018deb37d9f6f581f3ba17a685370c160e.jar" />
+    </item>
+    <item
+        jar="/home/assios/AndroidStudioProjects/MobImaging/openCVTutorial3CameraControl/build/intermediates/exploded-aar/MobImaging/openCVLibrary2410/unspecified/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="477ba977ec219abda693cd925ef4373fea65fe80">
+        <dex dex="/home/assios/AndroidStudioProjects/MobImaging/openCVTutorial3CameraControl/build/intermediates/pre-dexed/debug/classes-30ea752e5257bd7ba0c76d6383048def67a4c298.jar" />
     </item>
     <item
         jar="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
@@ -19,15 +40,8 @@
         jar="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/exploded-aar/MobImaging/openCVLibrary2410/unspecified/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="619c90c0a4ce8db6b683f9918e0c1c6255faf1a0">
+        sha1="477ba977ec219abda693cd925ef4373fea65fe80">
         <dex dex="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/pre-dexed/debug/classes-26668db1de595c9a69f5a85250dd885e14f45401.jar" />
-    </item>
-    <item
-        jar="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/pre-dexed/debug/classes-4e258662d79f9cf41a416ab9a0d4ab80f662f0ac.jar" />
     </item>
     <item
         jar="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"

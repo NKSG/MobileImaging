@@ -1,2 +1,4 @@
 include ':app'
 include ':openCVLibrary2410'
+include ':openCVTutorial3CameraControl'
+include ':openCVTutorial1CameraPreview'

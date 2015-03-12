@@ -18,11 +18,16 @@ import org.opencv.imgproc.Imgproc;
  */
 public class ProcessImage {
 
+    public int tall = 0;
 
-
-    public static Mat image(Mat input) {
+    public static Mat image(Mat input, int state) {
 
         Imgproc.Canny(input, input, 100, 100);
+
+        if (state==1)
+            return input;
+
+        Imgproc.blur(input, input, new Size(20, 0));
 
         return input;
     }

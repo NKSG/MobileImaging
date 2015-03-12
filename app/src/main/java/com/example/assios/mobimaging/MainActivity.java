@@ -12,6 +12,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -24,10 +25,12 @@ import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.JavaCameraView;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.Size;
 import org.opencv.core.MatOfPoint2f;
+import org.opencv.highgui.Highgui;
 import org.opencv.imgproc.Imgproc;
 
 import static org.opencv.calib3d.Calib3d.CALIB_CB_ADAPTIVE_THRESH;
@@ -131,30 +134,30 @@ public class MainActivity extends ActionBarActivity implements CvCameraViewListe
 
     public boolean found = false;
 
-    int tall = 9;
+    int state = 0;
 
     @Override
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
 
-        Mat img = imread("/chessboard.jpg");
+        Mat img = inputFrame.rgba();
 
+        if (state==0)
+            return img;
 
-        return ProcessImage.image(img);
+        return ProcessImage.image(img, state);
+
     }
-
-    //TAKE PICTURE
 
     @SuppressLint("SimpleDateFormat")
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         Log.i(TAG,"onTouch event");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-        String currentDateandTime = sdf.format(new Date());
-        String fileName = Environment.getExternalStorageDirectory().getPath() +
-                "/sample_picture_" + currentDateandTime + ".jpg";
 
-        mOpenCvCameraView.takePicture(fileName);
-        Toast.makeText(this, fileName + " saved", Toast.LENGTH_SHORT).show();
+        String[] states = {"CANNY", "BLUR", "yo"};
+
+        state+=1;
+
+        Toast.makeText(this, "State: " + states[state-1], Toast.LENGTH_SHORT).show();
         return false;
     }
 
