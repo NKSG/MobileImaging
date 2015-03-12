@@ -122,17 +122,12 @@ public class MainActivity extends ActionBarActivity implements CvCameraViewListe
         // TODO stuff
     }
 
-    //board
-    int board_width = 8;
-    int board_height = 8;
+    //int board_width = 8;
+    //int board_height = 8;
+    //public MatOfPoint2f points;
+    //public Size boardSize = new Size(board_width, board_height);
+    //public boolean found = false;
 
-    //DENNE DEKLARERES MULIGENS FEIL
-
-    public MatOfPoint2f points;
-
-    public Size boardSize = new Size(board_width, board_height);
-
-    public boolean found = false;
 
     int state = 0;
 
@@ -153,7 +148,7 @@ public class MainActivity extends ActionBarActivity implements CvCameraViewListe
     public boolean onTouch(View v, MotionEvent event) {
         Log.i(TAG,"onTouch event");
 
-        String[] states = {"CANNY", "BLUR", "yo"};
+        String[] states = {"CANNY", "BLUR", "yo", "halla", "what"};
 
         state+=1;
 

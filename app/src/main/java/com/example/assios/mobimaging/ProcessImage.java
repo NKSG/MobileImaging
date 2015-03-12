@@ -22,14 +22,17 @@ public class ProcessImage {
 
     public static Mat image(Mat input, int state) {
 
-        Imgproc.Canny(input, input, 100, 100);
-
-        if (state==1)
+        if (state==1) {
+            Imgproc.Canny(input, input, 100, 100);
+            return input;
+        }
+        else if (state==2) {
+            Imgproc.blur(input, input, new Size(20, 0));
+            return input;
+        }
+        else
             return input;
 
-        Imgproc.blur(input, input, new Size(20, 0));
-
-        return input;
     }
 
 }
