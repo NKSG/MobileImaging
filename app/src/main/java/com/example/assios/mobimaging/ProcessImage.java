@@ -58,17 +58,19 @@ public class ProcessImage {
         Mat blur = new MatOfFloat();
         Mat mask = new MatOfFloat();
 
-        MatOfFloat gray = new MatOfFloat();
-        MatOfFloat close = new MatOfFloat();
+        Mat gray = new MatOfFloat();
+        Mat close = new MatOfFloat();
 
         //Image preprocessing
-        Imgproc.GaussianBlur(input, blur, new Size(5.0, 5.0), 100.0);
+        Imgproc.GaussianBlur(input, blur, new Size(5.0, 5.0), 0);
+
+        blur.convertTo(blur, CvType.CV_32F);
 
         Imgproc.cvtColor(blur, gray, Imgproc.COLOR_RGB2GRAY);
 
 //        mask = zeros(gray.size());
 
-        mask = Mat.zeros(gray.size(), gray.type());
+        mask = Mat.zeros(gray.size(), CvType.CV_32F);
 
         Mat kernel1 = Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(11.0, 11.0));
         Imgproc.morphologyEx(gray, close, Imgproc.MORPH_CLOSE, kernel1);
