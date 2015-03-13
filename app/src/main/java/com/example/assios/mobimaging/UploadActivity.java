@@ -15,6 +15,8 @@ import org.opencv.android.Utils;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.Size;
+
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.highgui.Highgui;
@@ -22,7 +24,7 @@ import org.opencv.highgui.Highgui;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
-
+import org.opencv.android.OpenCVLoader;
 
 public class UploadActivity extends ActionBarActivity {
 
@@ -35,12 +37,11 @@ public class UploadActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
+        appImageView = (ImageView) findViewById(R.id.imageview);
 
         drawables = new Drawable[] {
                 getResources().getDrawable(R.drawable.chessboard)
         };
-
-        appImageView = (ImageView) findViewById(R.id.imageview);
     }
 
     public void backToMenu(View v) {
@@ -53,7 +54,7 @@ public class UploadActivity extends ActionBarActivity {
         //Get Mat file of chessboard.jpg:
         Mat m = new Mat();
         try {
-            m = Utils.loadResource(this, R.drawable.chessboard);
+            m = Utils.loadResource(this, R.drawable.chessboard2);
         } catch (IOException e) {
             e.printStackTrace();
         }

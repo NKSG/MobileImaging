@@ -11,6 +11,7 @@ import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.Size;
 import org.opencv.core.MatOfPoint2f;
+import org.opencv.highgui.Highgui;
 import org.opencv.imgproc.Imgproc;
 
 /**
@@ -22,16 +23,12 @@ public class ProcessImage {
 
     public static Mat image(Mat input, int state) {
 
-        if (state==1) {
-            Imgproc.Canny(input, input, 100, 100);
-            return input;
-        }
-        else if (state==2) {
-            Imgproc.blur(input, input, new Size(20, 0));
-            return input;
-        }
-        else
-            return input;
+        Size size = new Size(); size.height=5; size.width = 5;
+        Mat normal = input;
+        Mat blur = input.clone();
+//        Imgproc.Canny(input, blurAndCanny, 100, 100);
+        Imgproc.GaussianBlur(blur, blur, size, 0);
+        return blur;
 
     }
 

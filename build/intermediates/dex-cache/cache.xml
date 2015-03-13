@@ -2,53 +2,39 @@
 <items version="2" >
 
     <item
-        jar="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jar="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/pre-dexed/debug/classes-4e258662d79f9cf41a416ab9a0d4ab80f662f0ac.jar" />
+        <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\classes-570faf47d19f70cb3a086a9e9b97f4d7756a0d02.jar" />
     </item>
     <item
-        jar="/home/assios/AndroidStudioProjects/MobImaging/openCVTutorial1CameraPreview/build/intermediates/exploded-aar/MobImaging/openCVLibrary2410/unspecified/classes.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="477ba977ec219abda693cd925ef4373fea65fe80">
-        <dex dex="/home/assios/AndroidStudioProjects/MobImaging/openCVTutorial1CameraPreview/build/intermediates/pre-dexed/debug/classes-1c2ffbc520460fbbd0649489c8d056e44010bfdd.jar" />
-    </item>
-    <item
-        jar="/home/assios/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-4b9b2c018deb37d9f6f581f3ba17a685370c160e.jar" />
-    </item>
-    <item
-        jar="/home/assios/AndroidStudioProjects/MobImaging/openCVTutorial3CameraControl/build/intermediates/exploded-aar/MobImaging/openCVLibrary2410/unspecified/classes.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="477ba977ec219abda693cd925ef4373fea65fe80">
-        <dex dex="/home/assios/AndroidStudioProjects/MobImaging/openCVTutorial3CameraControl/build/intermediates/pre-dexed/debug/classes-30ea752e5257bd7ba0c76d6383048def67a4c298.jar" />
-    </item>
-    <item
-        jar="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-2b224515ca678147154c278c4b42e4d1613cb4e7.jar" />
-    </item>
-    <item
-        jar="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/exploded-aar/MobImaging/openCVLibrary2410/unspecified/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="477ba977ec219abda693cd925ef4373fea65fe80">
-        <dex dex="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/pre-dexed/debug/classes-26668db1de595c9a69f5a85250dd885e14f45401.jar" />
-    </item>
-    <item
-        jar="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jar="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/pre-dexed/debug/classes-880a32b4ae3ffb03fecc730746980274943038ef.jar" />
+        <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\classes-4b6032d4500adf6dc3ecd2d76377708d5f94b8e6.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\exploded-aar\MobileImaging\openCVLibrary2410\unspecified\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5b3e2e38dd0347926e9899425cb55655d67704b2">
+        <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\classes-71d1688785c1a06efa4872d8830dbda0a04eec48.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-37078eb256ef0b66a8da15a21f8733c5963e0ed0.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jonas\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-4d5341519c2412b0360d8ceb5b77c1986b11912c.jar" />
     </item>
 
 </items>

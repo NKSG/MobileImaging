@@ -40,8 +40,6 @@ import static org.opencv.highgui.Highgui.imread;
 
 public class MainActivity extends ActionBarActivity implements CvCameraViewListener2, View.OnTouchListener {
 
-    public int count = 0;
-
     private Tutorial3View mOpenCvCameraView;
 
     private final static String TAG = "OCV::MainActivity";
@@ -129,17 +127,13 @@ public class MainActivity extends ActionBarActivity implements CvCameraViewListe
     //public boolean found = false;
 
 
-    int state = 0;
 
     @Override
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
 
         Mat img = inputFrame.rgba();
 
-        if (state==0)
-            return img;
-
-        return ProcessImage.image(img, state);
+        return img;
 
     }
 
@@ -148,11 +142,7 @@ public class MainActivity extends ActionBarActivity implements CvCameraViewListe
     public boolean onTouch(View v, MotionEvent event) {
         Log.i(TAG,"onTouch event");
 
-        String[] states = {"CANNY", "BLUR", "yo", "halla", "what"};
-
-        state+=1;
-
-        Toast.makeText(this, "State: " + states[state-1], Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "State: " + "No states at the moment.", Toast.LENGTH_SHORT).show();
         return false;
     }
 
