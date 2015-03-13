@@ -14,76 +14,105 @@ import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfFloat;
 import org.opencv.core.MatOfPoint;
+import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.core.MatOfPoint2f;
 import org.opencv.highgui.Highgui;
 import org.opencv.imgproc.Imgproc;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by assios on 3/11/15.
  */
 public class ProcessImage {
 
-    public static int[][] zeros (Size size) {
-        int width = (int) size.width;
-        int height = (int) size.height;
+    public static Mat image2(Mat input) {
+        // STEP 0 Retrieving mask
+        Mat blur = new MatOfFloat();
+        Mat mask = new MatOfFloat();
+        Mat gray = new MatOfFloat();
+        Mat close = new MatOfFloat();
+        Imgproc.GaussianBlur(input, blur, new Size(5, 5),0);
+        Imgproc.cvtColor(blur, gray, Imgproc.COLOR_RGB2GRAY);
 
-        int[][] output = new int[width][height];
+        mask = MatOfFloat.zeros(gray.size(), gray.type());
 
-        for (int i = 0; i < width; i++)
-            for (int j = 0; j < height; j++) {
-                output[i][j] = 0;
+        // STEP 1 Image preprocessing:
+        Mat res = new Mat();
+        Imgproc.GaussianBlur(input, res, new Size(5, 5),0);
+        Imgproc.Canny(res, res, 100, 100);
+
+        Mat thresh = new Mat();
+        Imgproc.adaptiveThreshold(res, thresh, 255, 0, 1, 19, 2);
+
+        //STEP 2
+
+        List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+
+        Imgproc.adaptiveThreshold(res, thresh, 255, 0, 1, 19, 2);
+        Imgproc.findContours(thresh, contours, new Mat(), Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE);
+        Mat contour = contours.get(0);
+        Mat hier = contours.get(1);
+
+
+        double max_area = 0;
+
+        Mat best_cnt = new Mat();
+
+        for (int i = 0; i < contours.size(); i++) {
+            double area = Imgproc.contourArea(contours.get(i));
+            if (area>1000) {
+                if (area>max_area) {
+                    max_area = area;
+                    best_cnt = contours.get(i);
+                }
             }
+        }
 
-        return output;
+
+        List<MatOfPoint> best = new ArrayList<MatOfPoint>();
+
+        best.add((MatOfPoint) best_cnt);
+        List<MatOfPoint> bestlist = new ArrayList<MatOfPoint>();
+        bestlist.add((MatOfPoint) best_cnt);
+
+        Scalar clr = new Scalar(255,255,255);
+        Scalar clr2 = new Scalar(0,0,0);
+        Imgproc.drawContours(mask, bestlist, 0, clr, -1);
+        Imgproc.drawContours(mask, bestlist, 0, clr2, 2);
+
+        /*
+        cv2.drawContours(mask,[best_cnt],0,255,-1)
+        cv2.drawContours(mask,[best_cnt],0,0,2)
+
+        res = cv2.bitwise_and(res,mask)
+        */
+
+        return res;
     }
-
-    public static float[][] f (float[][] gray) {
-       return null;
-    }
-
-//    public Mat toFloat(Mat board) {
-//        for (int i=0; i<board.height(); i++ ) {
-//            for (int j=0; j<board.width(); j++) {
-//                for (Double d :board.get(i,j)) {
-//                    float temp;
-//                }
-//                board.put(i,j, board.get(i,j));
-//            }
-//        }
-//    }
 
     public static Mat image(Mat input) {
 
         Mat blur = new MatOfFloat();
         Mat mask = new MatOfFloat();
-
         Mat gray = new MatOfFloat();
         Mat close = new MatOfFloat();
 
         //Image preprocessing
-        Imgproc.GaussianBlur(input, blur, new Size(5.0, 5.0), 0);
-
-        blur.convertTo(blur, CvType.CV_32F);
-
+        Imgproc.GaussianBlur(input, blur, new Size(5, 5),0);
         Imgproc.cvtColor(blur, gray, Imgproc.COLOR_RGB2GRAY);
 
 //        mask = zeros(gray.size());
 
-        mask = Mat.zeros(gray.size(), CvType.CV_32F);
+        mask = MatOfFloat.zeros(gray.size(), gray.type());
 
         Mat kernel1 = Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(11.0, 11.0));
         Imgproc.morphologyEx(gray, close, Imgproc.MORPH_CLOSE, kernel1);
 
-
-
         Mat div = new MatOfFloat();
         Core.divide(gray, close, div);
-
-
-
-        String dump = gray.dump();
-        Log.d("Here comes the string: ", dump);
 
         Mat res = new MatOfFloat();
         Core.normalize(div, res, 0, 255, Core.NORM_MINMAX);
