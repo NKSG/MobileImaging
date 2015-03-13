@@ -1,26 +1,72 @@
 package com.example.assios.mobimaging;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+
+import org.opencv.android.Utils;
+import org.opencv.core.Core;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.core.Point;
+import org.opencv.core.Scalar;
+import org.opencv.highgui.Highgui;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Random;
 
 
 public class UploadActivity extends ActionBarActivity {
+
+    private ImageView appImageView;
+    private Drawable drawable;
+    private Random random;
+    private Drawable [] drawables = null; // create a Drawables array that stores location of different images
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
+
+        drawables = new Drawable[] {
+                getResources().getDrawable(R.drawable.chessboard)
+        };
+
+        appImageView = (ImageView) findViewById(R.id.imageview);
     }
 
-    public void buttonOnClick(View v) {
-        Button button = (Button) v;
+    public void backToMenu(View v) {
         startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+    }
 
+    public void ChoosePicture(View v) {
+        //appImageView.setImageDrawable(drawables[0]); // set the image to the ImageView
+
+        //Get Mat file of chessboard.jpg:
+        Mat m = new Mat();
+        try {
+            m = Utils.loadResource(this, R.drawable.chessboard);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ProcessImage.image(m, 1);
+
+
+        // convert to bitmap:
+        Bitmap bm = Bitmap.createBitmap(m.cols(), m.rows(), Bitmap.Config.ARGB_8888);
+        Utils.matToBitmap(m, bm);
+
+        // find the imageview and draw it!
+        appImageView.setImageBitmap(bm);
     }
 
 

@@ -10,18 +10,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Main Menu"
-        android:id="@+id/button3"
+        android:id="@+id/menubutton"
         android:layout_marginTop="53dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:onClick="buttonOnClick" />
+        android:onClick="backToMenu" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose picture"
-        android:id="@+id/button4"
+        android:id="@+id/appButton"
         android:layout_marginTop="52dp"
-        android:layout_below="@+id/button3"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/menubutton"
+        android:layout_centerHorizontal="true"
+        android:onClick="ChoosePicture"
+        android:nestedScrollingEnabled="false" />
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        />
 </RelativeLayout>

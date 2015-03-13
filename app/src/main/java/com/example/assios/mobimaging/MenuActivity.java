@@ -18,15 +18,11 @@ public class MenuActivity extends ActionBarActivity {
     }
 
     public void buttonOnClick(View v) {
-        Button button = (Button) v;
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
     }
 
     public void buttonOnClick2(View v) {
-        Button button = (Button) v;
         startActivity(new Intent(getApplicationContext(), UploadActivity.class));
-
     }
 
     @Override
