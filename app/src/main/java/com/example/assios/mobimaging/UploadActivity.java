@@ -54,13 +54,12 @@ public class UploadActivity extends ActionBarActivity {
         //Get Mat file of chessboard.jpg:
         Mat m = new Mat();
         try {
-            m = Utils.loadResource(this, R.drawable.chessboard2);
+            m = Utils.loadResource(this, R.drawable.sudoku);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        ProcessImage.image(m, 1);
-
+        m = ProcessImage.image(m);
 
         // convert to bitmap:
         Bitmap bm = Bitmap.createBitmap(m.cols(), m.rows(), Bitmap.Config.ARGB_8888);

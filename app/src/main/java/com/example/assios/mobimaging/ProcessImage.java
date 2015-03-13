@@ -19,16 +19,22 @@ import org.opencv.imgproc.Imgproc;
  */
 public class ProcessImage {
 
-    public int tall = 0;
+    public static Mat image(Mat input) {
 
-    public static Mat image(Mat input, int state) {
+        int tall = 10;
 
-        Size size = new Size(); size.height=5; size.width = 5;
-        Mat normal = input;
-        Mat blur = input.clone();
-//        Imgproc.Canny(input, blurAndCanny, 100, 100);
-        Imgproc.GaussianBlur(blur, blur, size, 0);
-        return blur;
+        //Image preprocessing
+        Imgproc.GaussianBlur(input, input, new Size(5, 5), 100);
+
+        Imgproc.cvtColor(input, input, Imgproc.COLOR_RGB2GRAY);
+
+        // LEGG INN mask = np.zeros((gray.shape),np.uint8) HER
+
+        Mat kernel1 = Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(11, 11));
+
+        Imgproc.morphologyEx(input, input, Imgproc.MORPH_CLOSE, kernel1);
+
+        return input;
 
     }
 
