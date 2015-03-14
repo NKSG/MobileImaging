@@ -53,7 +53,7 @@ public class ProcessImage {
         // x = width/2+width*j
 
         for (int i = 0; i < n_squares; i++) {
-            for (int j = 0; i < n_squares; i++) {
+            for (int j = 0; i < n_squares; j++) {
                 center.y = (square_width/2)+square_width*i;
                 center.x = (square_width/2)+square_width*j;
 
