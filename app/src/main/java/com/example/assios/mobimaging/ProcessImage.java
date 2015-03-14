@@ -9,6 +9,7 @@ import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.JavaCameraView;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.calib3d.Calib3d;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
@@ -17,6 +18,7 @@ import org.opencv.core.MatOfPoint;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.core.MatOfPoint2f;
+import org.opencv.core.TermCriteria;
 import org.opencv.highgui.Highgui;
 import org.opencv.imgproc.Imgproc;
 
@@ -89,6 +91,17 @@ public class ProcessImage {
 
         res = cv2.bitwise_and(res,mask)
         */
+
+        Size patternsize = new Size(8,8);
+
+        MatOfPoint2f corners = new MatOfPoint2f();
+
+        boolean patternfound = Calib3d.findChessboardCorners(res, patternsize, corners, Calib3d.CALIB_CB_ADAPTIVE_THRESH + Calib3d.CALIB_CB_NORMALIZE_IMAGE + Calib3d.CALIB_CB_FAST_CHECK);
+
+        if (patternfound)
+            Log.d("tag", "yoyoyo");
+
+        Calib3d.drawChessboardCorners(res, patternsize, corners, patternfound);
 
         return res;
     }
