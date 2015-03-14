@@ -65,11 +65,7 @@ public class UploadActivity extends ActionBarActivity {
 
         mlist = ProcessImage.cut(m, 8);
 
-        String siz = mlist.size() + "";
-
-        Log.d("yo", siz);
-
-        m = mlist.get(12);
+        m = mlist.get(63);
 
         // convert to bitmap:
         Bitmap bm = Bitmap.createBitmap(m.cols(), m.rows(), Bitmap.Config.ARGB_8888);
