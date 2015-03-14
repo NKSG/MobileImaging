@@ -57,8 +57,6 @@ public class ProcessImage {
                 center.y = (square_width/2)+square_width*i;
                 center.x = (square_width/2)+square_width*j;
 
-
-
                 Mat new_square = new Mat();
                 Imgproc.getRectSubPix(input, patch, center, new_square);
                 list.add(new_square);
