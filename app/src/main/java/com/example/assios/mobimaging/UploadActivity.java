@@ -54,7 +54,7 @@ public class UploadActivity extends ActionBarActivity {
         //Get Mat file of chessboard.jpg:
         Mat m = new Mat();
         try {
-            m = Utils.loadResource(this, R.drawable.sudoku);
+            m = Utils.loadResource(this, R.drawable.chessboard2);
         } catch (IOException e) {
             e.printStackTrace();
         }
