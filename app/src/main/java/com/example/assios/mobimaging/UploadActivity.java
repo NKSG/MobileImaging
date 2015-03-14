@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,8 @@ import org.opencv.highgui.Highgui;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import org.opencv.android.OpenCVLoader;
 
@@ -53,13 +56,20 @@ public class UploadActivity extends ActionBarActivity {
 
         //Get Mat file of chessboard.jpg:
         Mat m = new Mat();
+        List<Mat> mlist = new ArrayList<>();
         try {
-            m = Utils.loadResource(this, R.drawable.chessboard2);
+            m = Utils.loadResource(this, R.drawable.squares);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        m = ProcessImage.image2(m);
+        mlist = ProcessImage.cut(m, 8);
+
+        String siz = mlist.size() + "";
+
+        Log.d("yo", siz);
+
+        m = mlist.get(12);
 
         // convert to bitmap:
         Bitmap bm = Bitmap.createBitmap(m.cols(), m.rows(), Bitmap.Config.ARGB_8888);

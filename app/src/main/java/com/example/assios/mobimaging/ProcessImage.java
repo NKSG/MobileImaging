@@ -15,6 +15,8 @@ import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfFloat;
 import org.opencv.core.MatOfPoint;
+import org.opencv.core.Point;
+import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.core.MatOfPoint2f;
@@ -29,6 +31,42 @@ import java.util.List;
  * Created by assios on 3/11/15.
  */
 public class ProcessImage {
+
+    public static List<Mat> cut(Mat input, int n_squares) {
+
+        // n_squares is the square root of
+        // the total number of squares.
+
+        List<Mat> list = new ArrayList<>();
+
+        Size inputsize = input.size();
+        double width = inputsize.width;
+        double square_width = width/n_squares;
+
+        Size patch = new Size(square_width, square_width);
+
+        Point center = new Point();
+
+        // for i in range(0, len(height)):
+        // for j in range(0, len(width)):
+        // y = height/2+height*i
+        // x = width/2+width*j
+
+        for (int i = 0; i < n_squares; i++) {
+            for (int j = 0; i < n_squares; i++) {
+                center.y = (square_width/2)+square_width*i;
+                center.x = (square_width/2)+square_width*j;
+
+
+
+                Mat new_square = new Mat();
+                Imgproc.getRectSubPix(input, patch, center, new_square);
+                list.add(new_square);
+            }
+        }
+
+        return list;
+    }
 
     public static Mat image2(Mat input) {
         // STEP 0 Retrieving mask
