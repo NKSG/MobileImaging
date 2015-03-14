@@ -9,20 +9,6 @@
         <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\Jama-1.0.3-5eca3244307bacb6ef3cbd093021bde38b0677a9.jar" />
     </item>
     <item
-        jar="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\exploded-aar\MobileImaging\openCVLibrary2410\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="5b3e2e38dd0347926e9899425cb55655d67704b2">
-        <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\classes-71d1688785c1a06efa4872d8830dbda0a04eec48.jar" />
-    </item>
-    <item
-        jar="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-37078eb256ef0b66a8da15a21f8733c5963e0ed0.jar" />
-    </item>
-    <item
         jar="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -35,6 +21,20 @@
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
         <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\classes-4b6032d4500adf6dc3ecd2d76377708d5f94b8e6.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\exploded-aar\MobileImaging\openCVLibrary2410\unspecified\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5b3e2e38dd0347926e9899425cb55655d67704b2">
+        <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\classes-71d1688785c1a06efa4872d8830dbda0a04eec48.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-37078eb256ef0b66a8da15a21f8733c5963e0ed0.jar" />
     </item>
     <item
         jar="C:\Users\Jonas\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"

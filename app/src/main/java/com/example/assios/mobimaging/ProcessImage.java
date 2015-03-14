@@ -98,6 +98,8 @@ public class ProcessImage {
 
         boolean patternfound = Calib3d.findChessboardCorners(res, patternsize, corners, Calib3d.CALIB_CB_ADAPTIVE_THRESH + Calib3d.CALIB_CB_NORMALIZE_IMAGE + Calib3d.CALIB_CB_FAST_CHECK);
 
+        Log.d("HEREHERHE", " ablasblasdbflabsdflasbdflnasdlkfjasdlkfj" );
+
         if (patternfound)
             Log.d("tag", "yoyoyo");
 
