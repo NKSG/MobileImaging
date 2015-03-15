@@ -65,13 +65,15 @@ public class UploadActivity extends ActionBarActivity {
 
         mlist = ProcessImage.cut(m, 8);
 
-        m = mlist.get(8);
+        m = mlist.get(14);
 
         double[] cc = ProcessImage.findColor(m);
 
         for (int i = 0; i < cc.length; i++) {
             Log.d("HER: ", cc[i] + "");
         }
+
+        Log.d("COLOR: ", ProcessImage.colorDistance(cc));
 
         // convert to bitmap:
         Bitmap bm = Bitmap.createBitmap(m.cols(), m.rows(), Bitmap.Config.ARGB_8888);

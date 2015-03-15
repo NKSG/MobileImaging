@@ -44,14 +44,14 @@ public class ProcessImage {
         int distanceBlack = (int) Math.sqrt(Math.pow(Math.abs(color[0]-black[0]), 2) + Math.pow(Math.abs(color[1]-black[1]), 2) + Math.pow(Math.abs(color[2]-black[2]), 2));
         int distanceWhite = (int) Math.sqrt(Math.pow(Math.abs(color[0]-white[0]), 2) + Math.pow(Math.abs(color[1]-white[1]), 2) + Math.pow(Math.abs(color[2]-white[2]), 2));
 
-        int max = Math.max(distanceRed, Math.max(distanceBlack, distanceWhite));
+        int min = Math.min(distanceRed, Math.min(distanceBlack, distanceWhite));
 
-        if (max == distanceBlack)
-            return "BLACK";
-        else if (max == distanceRed)
-            return "RED";
+        if (min == distanceBlack)
+            return "BLACK: " + min;
+        else if (min == distanceRed)
+            return "RED " + min;
         else
-            return "WHITE";
+            return "WHITE " + min;
     }
 
     public static double[] findColor(Mat input) {
