@@ -66,10 +66,6 @@ public class ProcessImage {
 
         Size inputsize = input.size();
 
-        // inputsize.width and inputsize
-        // height should be
-        // the same
-
         double subSquareWidth = inputsize.width/10;
 
         Size patch = new Size(subSquareWidth, subSquareWidth);
@@ -203,11 +199,6 @@ public class ProcessImage {
         MatOfPoint2f corners = new MatOfPoint2f();
 
         boolean patternfound = Calib3d.findChessboardCorners(res, patternsize, corners, Calib3d.CALIB_CB_ADAPTIVE_THRESH + Calib3d.CALIB_CB_NORMALIZE_IMAGE + Calib3d.CALIB_CB_FAST_CHECK);
-
-        Log.d("HEREHERHE", " ablasblasdbflabsdflasbdflnasdlkfjasdlkfj" );
-
-        if (patternfound)
-            Log.d("tag", "yoyoyo");
 
         Calib3d.drawChessboardCorners(res, patternsize, corners, patternfound);
 

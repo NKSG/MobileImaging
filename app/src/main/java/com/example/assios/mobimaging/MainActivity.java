@@ -120,13 +120,6 @@ public class MainActivity extends ActionBarActivity implements CvCameraViewListe
         // TODO stuff
     }
 
-    //int board_width = 8;
-    //int board_height = 8;
-    //public MatOfPoint2f points;
-    //public Size boardSize = new Size(board_width, board_height);
-    //public boolean found = false;
-
-
 
     @Override
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
