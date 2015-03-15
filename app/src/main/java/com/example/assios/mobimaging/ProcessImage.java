@@ -35,7 +35,7 @@ import java.util.List;
  */
 public class ProcessImage {
 
-    public static String colorDistance(double[] color) {
+    public static String minColorDistance(double[] color) {
         double[] red = {255, 0, 0};
         double[] black = {0, 0, 0};
         double[] white = {255, 255, 255};
@@ -50,11 +50,11 @@ public class ProcessImage {
             return "EMPTY " + min;
 
         if (min == distanceBlack)
-            return "BLACK: " + min;
+            return "BLACK";
         else if (min == distanceRed)
-            return "RED " + min;
+            return "RED";
         else
-            return "WHITE " + min;
+            return "WHITE";
     }
 
     public static double[] findColor(Mat input) {
