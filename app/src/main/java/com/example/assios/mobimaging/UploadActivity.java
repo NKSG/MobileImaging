@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.TextView;
 
 import org.opencv.android.Utils;
 import org.opencv.core.Core;
@@ -36,17 +38,30 @@ public class UploadActivity extends ActionBarActivity {
     private Drawable drawable;
     private Random random;
     private Drawable[] drawables = null; // create a Drawables array that stores location of different images
+    private FEN fenString = new FEN();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
         appImageView = (ImageView) findViewById(R.id.imageview);
+
     }
 
     public void backToMenu(View v) {
         startActivity(new Intent(getApplicationContext(), MenuActivity.class));
     }
+
+    public void selectColor(View v) {
+        boolean checked = ((RadioButton) v).isChecked();
+
+        if (v.getId() == R.id.white)
+            fenString.turn = 'W';
+        else
+            fenString.turn = 'B';
+
+    }
+
 
     HashMap < Integer, Integer > map = new HashMap < Integer, Integer > () {
         {
@@ -98,11 +113,7 @@ public class UploadActivity extends ActionBarActivity {
             e.printStackTrace();
         }
 
-        String FEN = "B:";
-
         mlist = ProcessImage.cut(m, 8);
-
-        FEN fenString = new FEN();
 
         for (int key: map.keySet()) {
             Mat mat = mlist.get(key);

@@ -32,4 +32,44 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/menubutton"
+        android:layout_alignStart="@+id/menubutton"
+        android:layout_marginTop="46dp"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/black"
+            android:text="Black"
+            android:onClick="selectColor"
+            android:checked="true"
+            />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/white"
+            android:text="White"
+            android:onClick="selectColor"
+            />
+
+        </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Whose turn is it?"
+        android:id="@+id/textView"
+        android:layout_marginTop="139dp"
+        android:layout_below="@+id/appButton"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

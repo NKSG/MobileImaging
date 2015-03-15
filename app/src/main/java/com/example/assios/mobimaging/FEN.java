@@ -1,5 +1,8 @@
 package com.example.assios.mobimaging;
 
+import android.view.View;
+import android.widget.RadioButton;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -19,7 +22,7 @@ public class FEN {
         Collections.sort(white);
         Collections.sort(black);
 
-        String string = "[FEN \"B:W";
+        String string = "[FEN \"" + turn + ":W";
 
         for (int i = 0; i < white.size(); i++) {
             string+=white.get(i);
