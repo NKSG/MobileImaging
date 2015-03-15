@@ -1,5 +1,7 @@
 package com.example.assios.mobimaging;
 
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.util.Log;
 
 import org.opencv.android.CameraBridgeViewBase;
@@ -9,6 +11,7 @@ import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.JavaCameraView;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.android.Utils;
 import org.opencv.calib3d.Calib3d;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
@@ -32,10 +35,64 @@ import java.util.List;
  */
 public class ProcessImage {
 
+    public enum squareColor {
+        WHITE, BLACK, RED
+    }
+
+    public static double[] findColor(Mat input) {
+        /**
+         * Get the 10% innermost pixels
+         * and find out if the average color
+         * is WHITE, BLACK or RED
+         */
+
+        Size inputsize = input.size();
+
+        // inputsize.width and inputsize
+        // height should be
+        // the same
+
+        double subSquareWidth = inputsize.width/10;
+
+        Size patch = new Size(subSquareWidth, subSquareWidth);
+
+        Point center = new Point(inputsize.width/2, inputsize.height/2);
+
+        Mat subSquare = new Mat();
+
+        Imgproc.getRectSubPix(input, patch, center, subSquare);
+
+        int middle = (int) subSquare.size().width/2;
+
+        //                      B  G  R
+        double[] totalColors = {0, 0, 0};
+        long sum = subSquare.total();
+
+        for (int i = 0; i < subSquare.cols(); i++) {
+            for (int j = 0; j < subSquare.rows(); j++) {
+                double[] colors = subSquare.get(i, j);
+                totalColors[0] += colors[0];
+                totalColors[1] += colors[1];
+                totalColors[2] += colors[2];
+            }
+        }
+
+        double resultBlue = totalColors[0]/sum;
+        double resultGreen = totalColors[1]/sum;
+        double resultRed = totalColors[1]/sum;
+
+        double[] result = {resultRed, resultBlue, resultGreen};
+
+        return result;
+    }
+
     public static List<Mat> cut(Mat input, int n_squares) {
 
-        // n_squares is the square root of
-        // the total number of squares.
+        /**
+         * It takes a square chessboard
+         * and returns a list of pictures
+         * of all the squares on the board
+         */
 
         List<Mat> list = new ArrayList<>();
 
@@ -46,11 +103,6 @@ public class ProcessImage {
         Size patch = new Size(square_width, square_width);
 
         Point center = new Point();
-
-        // for i in range(0, len(height)):
-        // for j in range(0, len(width)):
-        // y = height/2+height*i
-        // x = width/2+width*j
 
         for (int i = 0; i < n_squares; i++) {
             for (int j = 0; j < n_squares; j++) {
