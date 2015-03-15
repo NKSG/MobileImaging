@@ -77,11 +77,11 @@ public class ProcessImage {
             }
         }
 
-        double resultBlue = totalColors[0]/sum;
+        double resultRed = totalColors[0]/sum;
         double resultGreen = totalColors[1]/sum;
-        double resultRed = totalColors[2]/sum;
+        double resultBlue = totalColors[2]/sum;
 
-        double[] result = {resultRed, resultBlue, resultGreen};
+        double[] result = {resultBlue, resultGreen, resultRed};
 
         return result;
     }

@@ -58,14 +58,20 @@ public class UploadActivity extends ActionBarActivity {
         Mat m = new Mat();
         List<Mat> mlist = new ArrayList<>();
         try {
-            m = Utils.loadResource(this, R.drawable.squares);
+            m = Utils.loadResource(this, R.drawable.checkersred);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         mlist = ProcessImage.cut(m, 8);
 
-        m = mlist.get(63);
+        m = mlist.get(8);
+
+        double[] cc = ProcessImage.findColor(m);
+
+        for (int i = 0; i < cc.length; i++) {
+            Log.d("HER: ", cc[i] + "");
+        }
 
         // convert to bitmap:
         Bitmap bm = Bitmap.createBitmap(m.cols(), m.rows(), Bitmap.Config.ARGB_8888);
