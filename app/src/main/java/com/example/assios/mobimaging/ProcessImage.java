@@ -71,15 +71,15 @@ public class ProcessImage {
         for (int i = 0; i < subSquare.cols(); i++) {
             for (int j = 0; j < subSquare.rows(); j++) {
                 double[] colors = subSquare.get(i, j);
-                totalColors[0] += colors[0];
-                totalColors[1] += colors[1];
-                totalColors[2] += colors[2];
+                for (int k = 0; k < colors.length; k++) {
+                    totalColors[k] += colors[k];
+                }
             }
         }
 
         double resultBlue = totalColors[0]/sum;
         double resultGreen = totalColors[1]/sum;
-        double resultRed = totalColors[1]/sum;
+        double resultRed = totalColors[2]/sum;
 
         double[] result = {resultRed, resultBlue, resultGreen};
 
