@@ -35,8 +35,23 @@ import java.util.List;
  */
 public class ProcessImage {
 
-    public enum squareColor {
-        WHITE, BLACK, RED
+    public static String colorDistance(double[] color) {
+        double[] red = {255, 0, 0};
+        double[] black = {0, 0, 0};
+        double[] white = {255, 255, 255};
+
+        int distanceRed = (int) Math.sqrt(Math.pow(Math.abs(color[0]-red[0]), 2) + Math.pow(Math.abs(color[1]-red[1]), 2) + Math.pow(Math.abs(color[2]-red[2]), 2));
+        int distanceBlack = (int) Math.sqrt(Math.pow(Math.abs(color[0]-black[0]), 2) + Math.pow(Math.abs(color[1]-black[1]), 2) + Math.pow(Math.abs(color[2]-black[2]), 2));
+        int distanceWhite = (int) Math.sqrt(Math.pow(Math.abs(color[0]-white[0]), 2) + Math.pow(Math.abs(color[1]-white[1]), 2) + Math.pow(Math.abs(color[2]-white[2]), 2));
+
+        int max = Math.max(distanceRed, Math.max(distanceBlack, distanceWhite));
+
+        if (max == distanceBlack)
+            return "BLACK";
+        else if (max == distanceRed)
+            return "RED";
+        else
+            return "WHITE";
     }
 
     public static double[] findColor(Mat input) {
