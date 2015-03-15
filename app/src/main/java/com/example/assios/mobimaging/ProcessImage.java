@@ -46,6 +46,9 @@ public class ProcessImage {
 
         int min = Math.min(distanceRed, Math.min(distanceBlack, distanceWhite));
 
+        if (min>100)
+            return "EMPTY " + min;
+
         if (min == distanceBlack)
             return "BLACK: " + min;
         else if (min == distanceRed)

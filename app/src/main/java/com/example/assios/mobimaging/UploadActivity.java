@@ -58,14 +58,23 @@ public class UploadActivity extends ActionBarActivity {
         Mat m = new Mat();
         List<Mat> mlist = new ArrayList<>();
         try {
-            m = Utils.loadResource(this, R.drawable.checkersred);
+            m = Utils.loadResource(this, R.drawable.testcheckers);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        String FEN = "B:";
+
         mlist = ProcessImage.cut(m, 8);
 
-        m = mlist.get(14);
+        m = mlist.get(62);
+
+        for (int i = 62; i>0; i-=2) {
+            Mat mat = new Mat();
+
+            mat = mlist.get(i);
+
+        }
 
         double[] cc = ProcessImage.findColor(m);
 
