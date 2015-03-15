@@ -43,4 +43,9 @@ public class FEN {
         return string;
     }
 
+    public void clear() {
+        this.black.clear();
+        this.white.clear();
+    }
+
 }

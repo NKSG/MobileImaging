@@ -132,8 +132,10 @@ public class UploadActivity extends ActionBarActivity {
         Bitmap bm = Bitmap.createBitmap(m.cols(), m.rows(), Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(m, bm);
 
+        fenString.clear();
+
         // find the imageview and draw it!
-        appImageView.setImageBitmap(bm);
+        //appImageView.setImageBitmap(bm);
     }
 
 
