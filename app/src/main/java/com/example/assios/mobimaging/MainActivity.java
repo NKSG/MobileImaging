@@ -40,7 +40,7 @@ import static org.opencv.highgui.Highgui.imread;
 
 public class MainActivity extends ActionBarActivity implements CvCameraViewListener2, View.OnTouchListener {
 
-    private Tutorial3View mOpenCvCameraView;
+    private NewCameraView mOpenCvCameraView;
 
     private final static String TAG = "OCV::MainActivity";
 
@@ -69,7 +69,7 @@ public class MainActivity extends ActionBarActivity implements CvCameraViewListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mOpenCvCameraView = (Tutorial3View) findViewById(R.id.MainActivityCameraView);
+        mOpenCvCameraView = (NewCameraView) findViewById(R.id.MainActivityCameraView);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
     }
