@@ -36,6 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.imgproc.Imgproc;
 
 public class UploadActivity extends ActionBarActivity {
 
@@ -114,7 +115,7 @@ public class UploadActivity extends ActionBarActivity {
 
         Mat m = new Mat();
         try {
-            m = Utils.loadResource(this, R.drawable.testcheckers);
+            m = Utils.loadResource(this, R.drawable.wild);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -147,7 +148,7 @@ public class UploadActivity extends ActionBarActivity {
 
         //Get Mat file of chessboard.jpg:
 
-
+        Imgproc.GaussianBlur(m, m, new Size(5, 5), 3);
 
         List<Mat> mlist = ProcessImage.cut(m, 8);
 
@@ -158,10 +159,13 @@ public class UploadActivity extends ActionBarActivity {
             Log.d("Circle in square: ", ("" + circleBool));
             double[] c = ProcessImage.findColor(mat);
 
+            //Log.d("FELT: ", key + "");
+            //Log.d("COLOR ", "R:"+c[0]+", G:"+c[1]+", B:"+c[2]);
+
             String color = ProcessImage.minColorDistance(c);
 
-            if (color == "P1") fenString.white.add(map.get(key));
-            else if (color == "P2") fenString.black.add(map.get(key));
+            if (color == "P1") fenString.black.add(map.get(key));
+            else if (color == "P2") fenString.white.add(map.get(key));
         }
 
         Log.d("FENSTRING: ", fenString.toString());
@@ -173,7 +177,7 @@ public class UploadActivity extends ActionBarActivity {
         fenString.clear();
 
         // find the imageview and draw it!
-        //appImageView.setImageBitmap(bm);
+        appImageView.setImageBitmap(bm);
     }
 
 

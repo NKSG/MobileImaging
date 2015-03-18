@@ -55,15 +55,17 @@ public class ProcessImage {
     }
 
     public static String minColorDistance(double[] color) {
-        double[] player1 = {255, 0, 0};
-        double[] board = {200, 100, 0};
-        double[] player2 = {255, 255, 255};
+        double[] player1 = {86, 83, 114};
+        double[] board = {168, 113, 142};
+        double[] player2 = {229, 238, 235};
 
         int distanceP1 = (int) Math.sqrt(Math.pow(Math.abs(color[0]-player1[0]), 2) + Math.pow(Math.abs(color[1]-player1[1]), 2) + Math.pow(Math.abs(color[2]-player1[2]), 2));
         int distanceBoard = (int) Math.sqrt(Math.pow(Math.abs(color[0]-board[0]), 2) + Math.pow(Math.abs(color[1]-board[1]), 2) + Math.pow(Math.abs(color[2]-board[2]), 2));
         int distanceP2 = (int) Math.sqrt(Math.pow(Math.abs(color[0]-player2[0]), 2) + Math.pow(Math.abs(color[1]-player2[1]), 2) + Math.pow(Math.abs(color[2]-player2[2]), 2));
 
         int min = Math.min(distanceP1, Math.min(distanceBoard, distanceP2));
+
+        Log.d("DISTANCE: ", distanceP1 + " " + distanceBoard + " " + distanceP2);
 
         //if (min>100)
         //    return "EMPTY " + min;
@@ -72,8 +74,10 @@ public class ProcessImage {
             return "BOARD";
         else if (min == distanceP1)
             return "P1";
-        else
+        else if (min== distanceP2)
             return "P2";
+
+        return "NO";
     }
 
     public static double[] findColor(Mat input) {
