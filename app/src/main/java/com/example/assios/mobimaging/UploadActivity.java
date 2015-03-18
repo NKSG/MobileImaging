@@ -69,7 +69,6 @@ public class UploadActivity extends ActionBarActivity {
 
     }
 
-
     HashMap < Integer, Integer > map = new HashMap < Integer, Integer > () {
         {
             put(1, 32);
@@ -155,6 +154,8 @@ public class UploadActivity extends ActionBarActivity {
         for (int key: map.keySet()) {
             Mat mat = mlist.get(key);
 
+            boolean circleBool = ProcessImage.findCircle(m);
+            Log.d("Circle in square: ", ("" + circleBool));
             double[] c = ProcessImage.findColor(mat);
 
             String color = ProcessImage.minColorDistance(c);

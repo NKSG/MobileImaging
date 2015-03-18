@@ -1,5 +1,7 @@
 package com.example.assios.mobimaging;
 
+import android.util.Log;
+
 import org.opencv.calib3d.Calib3d;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.opencv.imgproc.Imgproc.COLOR_BGR2GRAY;
+import static org.opencv.imgproc.Imgproc.CV_GAUSSIAN;
 import static org.opencv.imgproc.Imgproc.GaussianBlur;
 import static org.opencv.imgproc.Imgproc.cvtColor;
 
@@ -24,20 +27,31 @@ import static org.opencv.imgproc.Imgproc.cvtColor;
 public class ProcessImage {
 
     public static boolean findCircle (Mat input) {
-        Mat src_gray = new Mat(), src = input;
+        Mat src_gray = new Mat();
+        Mat src = input;
         cvtColor(src, src_gray, COLOR_BGR2GRAY);
-        GaussianBlur( src_gray, src_gray, src.size(), 2, 2 );
+        Imgproc.Canny(src_gray, src_gray, 32, 2);
+        GaussianBlur(src_gray, src_gray, new Size(9, 9), 2, 2);
         Mat circles = new Mat();
+        Log.d("Columns BEFORE: ", (""+circles.rows()));
 
 //        double iCannyUpperThreshold = 100;
 //        int iMinRadius = 20;
 //        int iMaxRadius = 400;
 //        double iAccumulator = 300;
-        Imgproc.HoughCircles(src_gray, circles, Imgproc.CV_HOUGH_GRADIENT,
-                1, (double) src_gray.rows()/8, 200, 100,
-                0, 0);
+//
+//        Imgproc.HoughCircles(src_gray, circles, Imgproc.CV_HOUGH_GRADIENT,
+//                2.0, src_gray.rows() / 8, iCannyUpperThreshold, iAccumulator,
+//                iMinRadius, iMaxRadius);
 
-        return false;
+        Imgproc.HoughCircles(src_gray, circles, Imgproc.CV_HOUGH_GRADIENT,
+                1, (double) src_gray.width()/8, 50, 45, src_gray.width()/2, src_gray.width()/8);
+        Log.d("Columns of circles: ", (""+circles.rows()));
+
+        if (circles.cols() > 0) {
+            return true;
+        }
+        else return false;
     }
 
     public static String minColorDistance(double[] color) {
