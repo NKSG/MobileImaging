@@ -12,12 +12,12 @@ import org.opencv.android.JavaCameraView;
 import java.io.FileOutputStream;
 import java.util.List;
 
-public class Tutorial3View extends JavaCameraView implements PictureCallback {
+public class NewCameraView extends JavaCameraView implements PictureCallback {
 
-    private static final String TAG = "Sample::Tutorial3View";
+    private static final String TAG = "Sample::NewCameraView";
     private String mPictureFileName;
 
-    public Tutorial3View(Context context, AttributeSet attrs) {
+    public NewCameraView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
