@@ -160,8 +160,8 @@ public class UploadActivity extends ActionBarActivity {
 
             String color = ProcessImage.minColorDistance(c);
 
-            if (color == "WHITE") fenString.white.add(map.get(key));
-            else if (color == "RED") fenString.black.add(map.get(key));
+            if (color == "P1") fenString.white.add(map.get(key));
+            else if (color == "P2") fenString.black.add(map.get(key));
         }
 
         Log.d("FENSTRING: ", fenString.toString());

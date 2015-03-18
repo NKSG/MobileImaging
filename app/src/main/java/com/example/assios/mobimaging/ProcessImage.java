@@ -55,25 +55,25 @@ public class ProcessImage {
     }
 
     public static String minColorDistance(double[] color) {
-        double[] red = {255, 0, 0};
-        double[] black = {0, 0, 0};
-        double[] white = {255, 255, 255};
+        double[] player1 = {255, 0, 0};
+        double[] board = {200, 100, 0};
+        double[] player2 = {255, 255, 255};
 
-        int distanceRed = (int) Math.sqrt(Math.pow(Math.abs(color[0]-red[0]), 2) + Math.pow(Math.abs(color[1]-red[1]), 2) + Math.pow(Math.abs(color[2]-red[2]), 2));
-        int distanceBlack = (int) Math.sqrt(Math.pow(Math.abs(color[0]-black[0]), 2) + Math.pow(Math.abs(color[1]-black[1]), 2) + Math.pow(Math.abs(color[2]-black[2]), 2));
-        int distanceWhite = (int) Math.sqrt(Math.pow(Math.abs(color[0]-white[0]), 2) + Math.pow(Math.abs(color[1]-white[1]), 2) + Math.pow(Math.abs(color[2]-white[2]), 2));
+        int distanceP1 = (int) Math.sqrt(Math.pow(Math.abs(color[0]-player1[0]), 2) + Math.pow(Math.abs(color[1]-player1[1]), 2) + Math.pow(Math.abs(color[2]-player1[2]), 2));
+        int distanceBoard = (int) Math.sqrt(Math.pow(Math.abs(color[0]-board[0]), 2) + Math.pow(Math.abs(color[1]-board[1]), 2) + Math.pow(Math.abs(color[2]-board[2]), 2));
+        int distanceP2 = (int) Math.sqrt(Math.pow(Math.abs(color[0]-player2[0]), 2) + Math.pow(Math.abs(color[1]-player2[1]), 2) + Math.pow(Math.abs(color[2]-player2[2]), 2));
 
-        int min = Math.min(distanceRed, Math.min(distanceBlack, distanceWhite));
+        int min = Math.min(distanceP1, Math.min(distanceBoard, distanceP2));
 
-        if (min>100)
-            return "EMPTY " + min;
+        //if (min>100)
+        //    return "EMPTY " + min;
 
-        if (min == distanceBlack)
-            return "BLACK";
-        else if (min == distanceRed)
-            return "RED";
+        if (min == distanceBoard)
+            return "BOARD";
+        else if (min == distanceP1)
+            return "P1";
         else
-            return "WHITE";
+            return "P2";
     }
 
     public static double[] findColor(Mat input) {
