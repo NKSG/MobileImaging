@@ -25,7 +25,12 @@ import org.opencv.core.Scalar;
 import org.opencv.highgui.Highgui;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.OptionalDataException;
+import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,6 +44,8 @@ public class UploadActivity extends ActionBarActivity {
     private Random random;
     private Drawable[] drawables = null; // create a Drawables array that stores location of different images
     private FEN fenString = new FEN();
+    ImageView picture;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,18 +109,48 @@ public class UploadActivity extends ActionBarActivity {
 
 
     public void ChoosePicture(View v) {
-        //appImageView.setImageDrawable(drawables[0]); // set the image to the ImageView
 
-        //Get Mat file of chessboard.jpg:
+        Bitmap bmap;
+
+
         Mat m = new Mat();
-        List < Mat > mlist = new ArrayList < > ();
         try {
             m = Utils.loadResource(this, R.drawable.testcheckers);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        mlist = ProcessImage.cut(m, 8);
+//        try{
+//            FileInputStream fis = getApplicationContext().openFileInput("picture");
+//            ObjectInputStream is = new ObjectInputStream(fis);
+//            picture = (ImageView) is.readObject();
+//            is.close();
+//            fis.close();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (OptionalDataException e) {
+//            e.printStackTrace();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (StreamCorruptedException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        if (!(picture == null)) {
+//            picture.buildDrawingCache();
+//            bmap = picture.getDrawingCache();
+//            Utils.bitmapToMat(bmap, m);
+//        }
+
+        //appImageView.setImageDrawable(drawables[0]); // set the image to the ImageView
+
+        //Get Mat file of chessboard.jpg:
+
+
+
+        List<Mat> mlist = ProcessImage.cut(m, 8);
 
         for (int key: map.keySet()) {
             Mat mat = mlist.get(key);

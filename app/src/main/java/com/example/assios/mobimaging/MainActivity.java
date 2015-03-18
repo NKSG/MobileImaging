@@ -1,9 +1,8 @@
 package com.example.assios.mobimaging;
 
 import android.annotation.SuppressLint;
-import android.os.Environment;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,30 +11,12 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Toast;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-
-import org.opencv.android.CameraBridgeViewBase;
+import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
-import org.opencv.android.BaseLoaderCallback;
-import org.opencv.android.JavaCameraView;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
-import org.opencv.core.CvType;
 import org.opencv.core.Mat;
-import org.opencv.core.MatOfPoint;
-import org.opencv.core.Size;
-import org.opencv.core.MatOfPoint2f;
-import org.opencv.highgui.Highgui;
-import org.opencv.imgproc.Imgproc;
-
-import static org.opencv.calib3d.Calib3d.CALIB_CB_ADAPTIVE_THRESH;
-import static org.opencv.calib3d.Calib3d.findChessboardCorners;
-import static org.opencv.highgui.Highgui.imread;
 
 
 public class MainActivity extends ActionBarActivity implements CvCameraViewListener2, View.OnTouchListener {

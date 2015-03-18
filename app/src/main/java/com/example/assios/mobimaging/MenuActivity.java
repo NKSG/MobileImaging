@@ -1,20 +1,23 @@
 package com.example.assios.mobimaging;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.OpenCVLoader;
 
 
 public class MenuActivity extends ActionBarActivity {
-    private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {};
-        protected void onCreate(Bundle savedInstanceState) {
+
+    private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
+    };
+
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_activity);
         OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_9, this, mLoaderCallback);
@@ -27,6 +30,10 @@ public class MenuActivity extends ActionBarActivity {
 
     public void buttonOnClick2(View v) {
         startActivity(new Intent(getApplicationContext(), UploadActivity.class));
+    }
+
+    public void buttonOnClick3(View v) {
+        startActivity(new Intent(getApplicationContext(), ShootAndCropActivity.class));
     }
 
     @Override

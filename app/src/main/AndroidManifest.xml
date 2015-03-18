@@ -3,10 +3,12 @@
     package="com.example.assios.mobimaging" >
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <uses-feature
-        android:name="android.hardware.camera"
-        android:required="false" />
+        android:name="android.hardware.Camera">
+
+        </uses-feature>
     <uses-feature
         android:name="android.hardware.camera.autofocus"
         android:required="false" />
@@ -41,6 +43,10 @@
             android:name=".UploadActivity"
             android:label="@string/title_activity_upload"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:label="@string/crop_activity"
+            android:name=".ShootAndCropActivity">
         </activity>
     </application>
 

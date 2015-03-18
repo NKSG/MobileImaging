@@ -1,39 +1,44 @@
 package com.example.assios.mobimaging;
 
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.util.Log;
-
-import org.opencv.android.CameraBridgeViewBase;
-import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
-import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
-import org.opencv.android.BaseLoaderCallback;
-import org.opencv.android.JavaCameraView;
-import org.opencv.android.LoaderCallbackInterface;
-import org.opencv.android.OpenCVLoader;
-import org.opencv.android.Utils;
 import org.opencv.calib3d.Calib3d;
 import org.opencv.core.Core;
-import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfFloat;
 import org.opencv.core.MatOfPoint;
+import org.opencv.core.MatOfPoint2f;
 import org.opencv.core.Point;
-import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
-import org.opencv.core.MatOfPoint2f;
-import org.opencv.core.TermCriteria;
-import org.opencv.highgui.Highgui;
 import org.opencv.imgproc.Imgproc;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.opencv.imgproc.Imgproc.COLOR_BGR2GRAY;
+import static org.opencv.imgproc.Imgproc.GaussianBlur;
+import static org.opencv.imgproc.Imgproc.cvtColor;
+
 /**
  * Created by assios on 3/11/15.
  */
 public class ProcessImage {
+
+    public static boolean findCircle (Mat input) {
+        Mat src_gray = new Mat(), src = input;
+        cvtColor(src, src_gray, COLOR_BGR2GRAY);
+        GaussianBlur( src_gray, src_gray, src.size(), 2, 2 );
+        Mat circles = new Mat();
+
+//        double iCannyUpperThreshold = 100;
+//        int iMinRadius = 20;
+//        int iMaxRadius = 400;
+//        double iAccumulator = 300;
+        Imgproc.HoughCircles(src_gray, circles, Imgproc.CV_HOUGH_GRADIENT,
+                1, (double) src_gray.rows()/8, 200, 100,
+                0, 0);
+
+        return false;
+    }
 
     public static String minColorDistance(double[] color) {
         double[] red = {255, 0, 0};
@@ -138,14 +143,14 @@ public class ProcessImage {
         Mat mask = new MatOfFloat();
         Mat gray = new MatOfFloat();
         Mat close = new MatOfFloat();
-        Imgproc.GaussianBlur(input, blur, new Size(5, 5),0);
-        Imgproc.cvtColor(blur, gray, Imgproc.COLOR_RGB2GRAY);
+        GaussianBlur(input, blur, new Size(5, 5), 0);
+        cvtColor(blur, gray, Imgproc.COLOR_RGB2GRAY);
 
         mask = MatOfFloat.zeros(gray.size(), gray.type());
 
         // STEP 1 Image preprocessing:
         Mat res = new Mat();
-        Imgproc.GaussianBlur(input, res, new Size(5, 5),0);
+        GaussianBlur(input, res, new Size(5, 5), 0);
         Imgproc.Canny(res, res, 100, 100);
 
         Mat thresh = new Mat();
@@ -213,8 +218,8 @@ public class ProcessImage {
         Mat close = new MatOfFloat();
 
         //Image preprocessing
-        Imgproc.GaussianBlur(input, blur, new Size(5, 5),0);
-        Imgproc.cvtColor(blur, gray, Imgproc.COLOR_RGB2GRAY);
+        GaussianBlur(input, blur, new Size(5, 5), 0);
+        cvtColor(blur, gray, Imgproc.COLOR_RGB2GRAY);
 
 //        mask = zeros(gray.size());
 
@@ -230,7 +235,7 @@ public class ProcessImage {
         Core.normalize(div, res, 0, 255, Core.NORM_MINMAX);
 
         Mat res2 = new MatOfFloat();
-        Imgproc.cvtColor(res, res2, Imgproc.COLOR_GRAY2BGR);
+        cvtColor(res, res2, Imgproc.COLOR_GRAY2BGR);
 
         return res2;
 
