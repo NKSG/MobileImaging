@@ -87,9 +87,9 @@ class randomMove:
 		for i in range(len(self.board)):
 			for j in range(len(self.board[i])):
 				if(self.turn == "W" and self.board[i][j]== self.turn) :
-					self.moves.append(self.whiteRecursiveConquering(i,j, self.col[i]+self.row[j]))
+					self.moves.append(self.whiteRecursiveConquering(i,j, self.row[j]+self.col[i]))
 				if(self.turn == "B" and self.board[i][j]== self.turn) :
-					self.moves.append(self.blackRecursiveConquering(i,j, self.col[i]+self.row[j]))
+					self.moves.append(self.blackRecursiveConquering(i,j, self.row[j]+self.col[i]))
 		x = 0
 		while (x<len(self.moves)):
 			if not "-" in self.moves[x]:	
@@ -101,20 +101,20 @@ class randomMove:
 	def blackRecursiveConquering(self, x, y, singleMove):
 		if(self.insideBoard(x+2,y+2)):
 			if (self.board[x+1][y+1] == "W" and self.board[x+2][y+2]==None):
-				return self.blackRecursiveConquering(x+2, y+2, singleMove + "-" + self.col[x+2] + self.row[y+2])
+				return self.blackRecursiveConquering(x+2, y+2, singleMove + "-" +  self.row[y+2]+ self.col[x+2] )
 		if(self.insideBoard(x+2, y-2)):
 			if (self.board[x+1][y-1] == "W" and self.board[x+2][y-2]==None):
-				return self.blackRecursiveConquering(x+2, y-2, singleMove + "-" + self.col[x+2]+ self.row[y-2])
+				return self.blackRecursiveConquering(x+2, y-2, singleMove + "-" +  self.row[y-2]+ self.col[x+2])
 		return singleMove
 
 
 	def whiteRecursiveConquering(self, x, y, singleMove):
 		if(self.insideBoard(x-2,y-2)):
 			if (self.board[x-1][y-1] == "B" and self.board[x-2][y-2]==None):
-				return self.whiteRecursiveConquering(x-2, y-2, singleMove+ "-"+ self.col[x-2] + self.row[y-2])
+				return self.whiteRecursiveConquering(x-2, y-2, singleMove+ "-"+ self.row[y-2]+self.col[x-2])
 		if(self.insideBoard(x-2, y+2)):
 			if (self.board[x-1][y+1] == "B" and self.board[x-2][y+2]==None):
-				return self.whiteRecursiveConquering(x-2, y+2, singleMove+ "-" + self.col[x-2]+ self.row[y+2])
+				return self.whiteRecursiveConquering(x-2, y+2, singleMove+ "-" + self.row[y+2]+self.col[x-2])
 		return singleMove
 
 	def pickRandom(self):
@@ -131,4 +131,3 @@ x.parseFEN()
 for i in x.board:
 	print i
 print x.getConqueringMoves()
-print x.board[0][0]
