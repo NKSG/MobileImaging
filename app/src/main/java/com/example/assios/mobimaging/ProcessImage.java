@@ -55,8 +55,8 @@ public class ProcessImage {
 
     public static String minColorDistance(double[] color) {
         double[] player1 = {86, 83, 114};
-        double[] board = {168, 113, 142};
-        double[] player2 = {229, 238, 235};
+        double[] board = {171, 41, 54};
+        double[] player2 = {255, 255, 255};
 
         int distanceP1 = (int) Math.sqrt(Math.pow(Math.abs(color[0]-player1[0]), 2) + Math.pow(Math.abs(color[1]-player1[1]), 2) + Math.pow(Math.abs(color[2]-player1[2]), 2));
         int distanceBoard = (int) Math.sqrt(Math.pow(Math.abs(color[0]-board[0]), 2) + Math.pow(Math.abs(color[1]-board[1]), 2) + Math.pow(Math.abs(color[2]-board[2]), 2));

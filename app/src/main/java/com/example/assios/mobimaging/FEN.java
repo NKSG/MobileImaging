@@ -18,7 +18,7 @@ public class FEN {
         Collections.sort(white);
         Collections.sort(black);
 
-        String string = "[FEN \"" + turn + ":W";
+        String string = "[FEN" + turn + ":W";
 
         for (int i = 0; i < white.size(); i++) {
             string+=white.get(i);
@@ -34,7 +34,7 @@ public class FEN {
                 string+=",";
         }
 
-        string+="\"]";
+        string+="]";
 
         return string;
     }

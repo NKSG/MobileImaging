@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -11,7 +12,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.Map;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.opencv.android.Utils;
 import org.opencv.core.CvType;
@@ -27,6 +45,7 @@ import java.util.Random;
 public class UploadActivity extends ActionBarActivity {
 
     private ImageView appImageView;
+    private TextView moveView;
     private Drawable drawable;
     private Random random;
     private Drawable[] drawables = null; // create a Drawables array that stores location of different images
@@ -38,7 +57,14 @@ public class UploadActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
+
+        // Allow network access in the main thread
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         appImageView = (ImageView) findViewById(R.id.imageview);
+
+        moveView = (TextView)findViewById(R.id.textv);
 
     }
 
@@ -97,18 +123,17 @@ public class UploadActivity extends ActionBarActivity {
     public void ChoosePicture(View v) {
         Mat m;
         Bundle b = this.getIntent().getExtras();
-        if(b!=null){
+        if (b != null) {
             m = new Mat();
             Bitmap bmap = b.getParcelable("picture");
             Bitmap bmp32 = bmap.copy(Bitmap.Config.ARGB_8888, true);
 
             m = new Mat(bmap.getWidth(), bmap.getHeight(), CvType.CV_8UC1);
-            Utils.bitmapToMat(bmp32,m);
+            Utils.bitmapToMat(bmp32, m);
 
             Imgproc.cvtColor(m, m, Imgproc.COLOR_RGB2BGR);
-            
-        }
-        else {
+
+        } else {
             m = new Mat();
             try {
                 m = Utils.loadResource(this, R.drawable.picpic);
@@ -123,7 +148,7 @@ public class UploadActivity extends ActionBarActivity {
         Imgproc.GaussianBlur(m, m, new Size(5, 5), 2);
         List<Mat> mlist = ProcessImage.cut(m, 8);
 
-        for (int key: map.keySet()) {
+        for (int key : map.keySet()) {
             Mat mat = mlist.get(key);
 
             //boolean circleBool = ProcessImage.findCircle(m);
@@ -139,23 +164,24 @@ public class UploadActivity extends ActionBarActivity {
             else if (color == "P2") fenString.white.add(map.get(key));
         }
 
-        Log.d("FENSTRING: ", fenString.toString());
-
-        // convert to bitmap:
-//        Imgproc.Canny(m, m, 90, 30);
-
         Bitmap bm = Bitmap.createBitmap(m.cols(), m.rows(), Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(m, bm);
 
+        String fen = fenString.toString();
+
+        String fen_url = "http://assios.no:8000/?fen=";
+        fen_url = fen_url + fen;
+
+        Log.d("FEN URL: ", fen_url);
+
         fenString.clear();
 
-        // find the imageview and draw it!
-        String s = "";
+        String test_fen = "http://assios.no:8000/?fen=FEN%22B:W18,19,21,23,24,26,29,30,31,32:B1,2,3,4,6,7,9,10,11,12%22";
 
-        //s = URLFetch.getMove(fenString);
+        String move = URLFetch.url(fen_url);
 
-        appImageView.setImageBitmap(bm);
-
+        moveView.setText(move);
+        moveView.setTextSize(20);
     }
 
 

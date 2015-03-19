@@ -19,7 +19,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose picture"
+        android:text="Find move"
         android:id="@+id/appButton"
         android:layout_marginTop="52dp"
         android:layout_below="@+id/menubutton"
@@ -29,6 +29,12 @@
 
     <ImageView
         android:id="@+id/imageview"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/textv"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         />

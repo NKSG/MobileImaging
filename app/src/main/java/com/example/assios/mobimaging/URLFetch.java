@@ -3,7 +3,6 @@ package com.example.assios.mobimaging;
 import android.util.Log;
 
 import java.io.BufferedReader;
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,9 +20,22 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.Map;
+
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,42 +50,23 @@ public class URLFetch {
      * from a Rest API
      */
 
-    private static String readUrl(String urlString) throws Exception {
-        BufferedReader reader = null;
+    public static String url(String url) {
+        StringBuilder str = new StringBuilder();
+
+        HttpClient client = new DefaultHttpClient();
+        HttpGet request = new HttpGet(url);
         try {
-            URL url = new URL(urlString);
-            reader = new BufferedReader(new InputStreamReader(url.openStream()));
-            StringBuffer buffer = new StringBuffer();
-            int read;
-            char[] chars = new char[1024];
-            while ((read = reader.read(chars)) != -1)
-                buffer.append(chars, 0, read);
-
-            return buffer.toString();
-        } finally {
-            if (reader != null) reader.close();
-        }
-    }
-
-
-    public static String getMove(FEN fen) {
-
-        String fen_string = fen.toString();
-
-        String json_data = null;
-
-        try {
-            json_data = URLFetch.readUrl("localhost:8080" + fen_string);
-        } catch (Exception e1) {
-            e1.printStackTrace();
+            HttpResponse response = client.execute(request);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+            String line;
+            while((line = reader.readLine()) != null) {
+                str.append(line);
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
         }
 
-        Gson gson = new Gson();
-        HashMap < String, String > move = new Gson().fromJson(json_data, new TypeToken < HashMap < String, String >> () {}.getType());
-
-        String random_move = move.get("random_move");
-
-        return random_move;
+        return str.toString();
 
     }
 }

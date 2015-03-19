@@ -1,8 +1,8 @@
 
 import math
+from random import randint
 
 class randomMove:
-
 
 	def __init__(self, FEN, mappen):
 		self.FEN = FEN
@@ -118,16 +118,21 @@ class randomMove:
 		return singleMove
 
 	def pickRandom(self):
-		getConqueringMoves()
+		self.getConqueringMoves()
 		if (len(self.moves) == 0):
-			getSingleMoves()
-		if len(self == 0):
+			self.getSingleMoves()
+		if (len(self.moves) == 0):
 			return "no valid moves"
-		return self.moves[randint(0,len(moves)-1)]
+		return self.moves[randint(0,len(self.moves)-1)]
 
-di = dict([(4, [0,7]), (3, [0,5]), (2, [0,3]), (1, [0,1]), (5, [1,0]), (6, [1,2]), (7, [1, 4]), (8, [1,6]), (9, [2,1]), (10, [2,3]), (11, [2,5]), (12, [2,7]), (13, [3, 0]), (14, [3,2]), (15, [3,4]), (16, [3,6]), (17, [4,1]), (18, [4,3]), (19, [4,5]), (20, [4,7]), (21, [5, 0]), (22, [5,2]), (23, [5,4]), (24, [5,6]), (25, [6,1]), (26, [6,3]), (27, [6,5]), (28, [6, 7]), (29, [7,0]), (30, [7,2]), (31, [7,4]), (32, [7,6])])
-x = randomMove("FEN\"W:W18,19,30,32:B6,8,15", di)
-x.parseFEN()
-for i in x.board:
-	print i
-print x.getConqueringMoves()
+def main(fen_string):
+	di = dict([(4, [0,7]), (3, [0,5]), (2, [0,3]), (1, [0,1]), (5, [1,0]), (6, [1,2]), (7, [1, 4]), (8, [1,6]), (9, [2,1]), (10, [2,3]), (11, [2,5]), (12, [2,7]), (13, [3, 0]), (14, [3,2]), (15, [3,4]), (16, [3,6]), (17, [4,1]), (18, [4,3]), (19, [4,5]), (20, [4,7]), (21, [5, 0]), (22, [5,2]), (23, [5,4]), (24, [5,6]), (25, [6,1]), (26, [6,3]), (27, [6,5]), (28, [6, 7]), (29, [7,0]), (30, [7,2]), (31, [7,4]), (32, [7,6])])
+	x = randomMove(fen_string, di)
+	x.parseFEN()
+	
+	move = x.pickRandom()
+
+	temp0 = move[0]
+	
+
+	return move

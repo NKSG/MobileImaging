@@ -9,7 +9,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Camera Mode"
+        android:text="OpenCV"
         android:id="@+id/button"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -19,7 +19,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Upload mode"
+        android:text="Process image"
         android:id="@+id/button2"
         android:layout_marginTop="57dp"
         android:layout_below="@+id/button"
@@ -29,7 +29,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Native Camera"
+        android:text="Crop tool"
         android:id="@+id/button3"
         android:onClick="buttonOnClick3"
         android:layout_below="@+id/button2"
