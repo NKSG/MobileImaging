@@ -3,40 +3,25 @@ package com.example.assios.mobimaging;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.TextView;
 
 import org.opencv.android.Utils;
-import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
+import org.opencv.imgproc.Imgproc;
 
-import org.opencv.core.Point;
-import org.opencv.core.Scalar;
-import org.opencv.highgui.Highgui;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.OptionalDataException;
-import java.io.StreamCorruptedException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
-import org.opencv.android.OpenCVLoader;
-import org.opencv.imgproc.Imgproc;
 
 public class UploadActivity extends ActionBarActivity {
 
@@ -109,47 +94,27 @@ public class UploadActivity extends ActionBarActivity {
 
 
     public void ChoosePicture(View v) {
-
-        Bitmap bmap;
-
-
-        Mat m = new Mat();
-        try {
-            m = Utils.loadResource(this, R.drawable.wild);
-        } catch (IOException e) {
-            e.printStackTrace();
+        Mat m;
+        Bundle b = this.getIntent().getExtras();
+        if(b!=null){
+            Bitmap bmap = b.getParcelable("picture");
+            Bitmap bmp32 = bmap.copy(Bitmap.Config.ARGB_8888, true);
+            m = new Mat(bmap.getWidth(), bmap.getHeight(), CvType.CV_8UC1);
+            Utils.bitmapToMat(bmp32,m);
+        }
+        else {
+            m = new Mat();
+            try {
+                m = Utils.loadResource(this, R.drawable.wild);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
-//        try{
-//            FileInputStream fis = getApplicationContext().openFileInput("picture");
-//            ObjectInputStream is = new ObjectInputStream(fis);
-//            picture = (ImageView) is.readObject();
-//            is.close();
-//            fis.close();
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (OptionalDataException e) {
-//            e.printStackTrace();
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (StreamCorruptedException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        if (!(picture == null)) {
-//            picture.buildDrawingCache();
-//            bmap = picture.getDrawingCache();
-//            Utils.bitmapToMat(bmap, m);
-//        }
-
         //appImageView.setImageDrawable(drawables[0]); // set the image to the ImageView
-
         //Get Mat file of chessboard.jpg:
 
-        Imgproc.GaussianBlur(m, m, new Size(5, 5), 3);
-
+        Imgproc.GaussianBlur(m, m, new Size(9, 9), 2);
         List<Mat> mlist = ProcessImage.cut(m, 8);
 
         for (int key: map.keySet()) {
@@ -171,13 +136,15 @@ public class UploadActivity extends ActionBarActivity {
         Log.d("FENSTRING: ", fenString.toString());
 
         // convert to bitmap:
+//        Imgproc.Canny(m, m, 90, 30);
+
         Bitmap bm = Bitmap.createBitmap(m.cols(), m.rows(), Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(m, bm);
 
         fenString.clear();
 
         // find the imageview and draw it!
-        appImageView.setImageBitmap(bm);
+//        appImageView.setImageBitmap(bm);
     }
 
 

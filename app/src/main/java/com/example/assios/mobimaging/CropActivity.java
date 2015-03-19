@@ -2,7 +2,6 @@ package com.example.assios.mobimaging;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -14,12 +13,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class ShootAndCropActivity extends Activity implements OnClickListener {
+public class CropActivity extends Activity implements OnClickListener, Serializable {
 
     ImageView globalPicture;
 
@@ -43,7 +39,7 @@ public class ShootAndCropActivity extends Activity implements OnClickListener {
                 startActivityForResult(captureIntent, CAMERA_CAPTURE);
             }
             catch(ActivityNotFoundException anfe){
-                String errorMessage = "Whoops - your device doesn't support capturing images!";
+                String errorMessage = "Your device doesnt support camera";
                 Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
                 toast.show();
             }
@@ -61,18 +57,13 @@ public class ShootAndCropActivity extends Activity implements OnClickListener {
                 Bitmap thePic = extras.getParcelable("data");
                 ImageView picView = (ImageView)findViewById(R.id.picture);
 
-                FileOutputStream fos = null;
-                try {
-                    fos = getApplicationContext().openFileOutput("picture", Context.MODE_PRIVATE);
-                    ObjectOutputStream os = new ObjectOutputStream(fos);
-                    os.writeObject(this);
-                    os.close();
-                    fos.close();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                Intent i = new Intent();
+                Bundle b = new Bundle();
+                b.putParcelable("picture", thePic);
+                i.putExtras(b);
+                i.setClass(this, UploadActivity.class);
+                startActivity(i);
+
                 picView.setImageBitmap(thePic);
             }
         }
@@ -91,7 +82,7 @@ public class ShootAndCropActivity extends Activity implements OnClickListener {
             startActivityForResult(cropIntent, PIC_CROP);
         }
         catch(ActivityNotFoundException anfe){
-            String errorMessage = "Whoops - your device doesn't support the crop action!";
+            String errorMessage = "Your device doesnt support cropping";
             Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
             toast.show();
         }
