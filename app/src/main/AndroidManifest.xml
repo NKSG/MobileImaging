@@ -30,7 +30,6 @@
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -46,7 +45,7 @@
         </activity>
         <activity
             android:label="@string/crop_activity"
-            android:name=".ShootAndCropActivity">
+            android:name=".CropActivity">
         </activity>
     </application>
 

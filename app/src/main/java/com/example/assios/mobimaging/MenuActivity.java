@@ -1,7 +1,6 @@
 package com.example.assios.mobimaging;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -33,7 +32,7 @@ public class MenuActivity extends ActionBarActivity {
     }
 
     public void buttonOnClick3(View v) {
-        startActivity(new Intent(getApplicationContext(), ShootAndCropActivity.class));
+        startActivity(new Intent(getApplicationContext(), CropActivity.class));
     }
 
     @Override
