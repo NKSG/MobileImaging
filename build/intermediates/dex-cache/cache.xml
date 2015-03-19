@@ -2,46 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Jonas\MImaging\MobileImaging\app\libs\Jama-1.0.3.jar"
+        jar="/home/assios/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="4e7b3b81770450a21b4295e27c2ccb802ab537e1">
-        <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\Jama-1.0.3-5eca3244307bacb6ef3cbd093021bde38b0677a9.jar" />
-    </item>
-    <item
-        jar="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\classes-570faf47d19f70cb3a086a9e9b97f4d7756a0d02.jar" />
-    </item>
-    <item
-        jar="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\classes-4b6032d4500adf6dc3ecd2d76377708d5f94b8e6.jar" />
-    </item>
-    <item
-        jar="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\exploded-aar\MobileImaging\openCVLibrary2410\unspecified\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="23b39f7a0e332ccdcba9cf7dd46dd40a3c548dbd">
-        <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\classes-71d1688785c1a06efa4872d8830dbda0a04eec48.jar" />
-    </item>
-    <item
-        jar="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-37078eb256ef0b66a8da15a21f8733c5963e0ed0.jar" />
-    </item>
-    <item
-        jar="C:\Users\Jonas\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="C:\Users\Jonas\MImaging\MobileImaging\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-4d5341519c2412b0360d8ceb5b77c1986b11912c.jar" />
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/home/assios/AndroidStudioProjects/MobImaging/app/build/intermediates/pre-dexed/debug/gson-2.3.1-2dc0ce603ce4d3c53c05bc3f31367489d416f667.jar" />
     </item>
 
 </items>

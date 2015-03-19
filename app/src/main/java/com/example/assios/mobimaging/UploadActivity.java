@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import org.json.JSONException;
 import org.opencv.android.Utils;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
@@ -115,7 +116,7 @@ public class UploadActivity extends ActionBarActivity {
 
         Mat m = new Mat();
         try {
-            m = Utils.loadResource(this, R.drawable.wild);
+            m = Utils.loadResource(this, R.drawable.picpic);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -155,8 +156,8 @@ public class UploadActivity extends ActionBarActivity {
         for (int key: map.keySet()) {
             Mat mat = mlist.get(key);
 
-            boolean circleBool = ProcessImage.findCircle(m);
-            Log.d("Circle in square: ", ("" + circleBool));
+            //boolean circleBool = ProcessImage.findCircle(m);
+            //Log.d("Circle in square: ", ("" + circleBool));
             double[] c = ProcessImage.findColor(mat);
 
             //Log.d("FELT: ", key + "");
@@ -177,6 +178,10 @@ public class UploadActivity extends ActionBarActivity {
         fenString.clear();
 
         // find the imageview and draw it!
+        String s = "";
+
+        //s = URLFetch.getMove(fenString);
+
         appImageView.setImageBitmap(bm);
     }
 
