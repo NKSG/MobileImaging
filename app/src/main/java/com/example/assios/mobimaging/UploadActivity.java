@@ -96,13 +96,17 @@ public class UploadActivity extends ActionBarActivity {
 
     public void ChoosePicture(View v) {
         Mat m;
-
         Bundle b = this.getIntent().getExtras();
         if(b!=null){
+            m = new Mat();
             Bitmap bmap = b.getParcelable("picture");
             Bitmap bmp32 = bmap.copy(Bitmap.Config.ARGB_8888, true);
+
             m = new Mat(bmap.getWidth(), bmap.getHeight(), CvType.CV_8UC1);
             Utils.bitmapToMat(bmp32,m);
+
+            Imgproc.cvtColor(m, m, Imgproc.COLOR_RGB2BGR);
+            
         }
         else {
             m = new Mat();
@@ -116,7 +120,7 @@ public class UploadActivity extends ActionBarActivity {
         //appImageView.setImageDrawable(drawables[0]); // set the image to the ImageView
         //Get Mat file of chessboard.jpg:
 
-        Imgproc.GaussianBlur(m, m, new Size(9, 9), 2);
+        Imgproc.GaussianBlur(m, m, new Size(5, 5), 2);
         List<Mat> mlist = ProcessImage.cut(m, 8);
 
         for (int key: map.keySet()) {
